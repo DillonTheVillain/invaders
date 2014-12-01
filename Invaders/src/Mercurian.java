@@ -35,15 +35,22 @@ public Mercurian(int parentWidth, int parentHeight)
 	//the height and width of the player are set via the image size
 	this.height = img.getHeight();
 	this.width = img.getWidth();
-	
-
-	
-}
-
-public void cloak(Graphics g) {
+	cloakTime.start();
+	}
+		public void actionPerformed(ActionEvent e) {
+			{
+				if (e.getSource() == cloakTimer){
+				cloak=!cloak;
+				}
+			}
 			
-			//draws the player image in its current position
+		public void draw(Graphics g) {
+			
+			if(!cloak)
+			{
+			//draws the Destroyer image in its current position if not cloaked
 			g.drawImage(img, position.x, position.y, width, height, null);
+			}
 			
 			//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
 			//otherwise the bullets move and draw methods are called to update it on the screen
@@ -59,8 +66,5 @@ public void cloak(Graphics g) {
 			    	iterator.remove();
 			    }
 			}
-			
 		}
-
-
-}
+		
