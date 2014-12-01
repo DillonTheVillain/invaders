@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 	private ArrayList<Enemy> enemyList;
 	Timer redrawTimer;
+	enemyTimer = new Timer(rnd.NextInt(10)*1000, this);
 	
 	public GamePanel(){
 		
@@ -56,6 +57,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {	
 		//causes the screen to be redrawn
 		this.repaint();
+		
+		Random randomGen = new Random();
+		int rand = 0;// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
+		rand = randomGen.nextInt(10) + 1;
+
+			
+		if (rand <= 8) {
+			
+			enemyList.add(new Meteor()); 
+		
+		}
+			
+			else if (rand > 8) {
+			
+			enemyList.add(new Destroyer()); // 
+		
+		}
 	}
 	
 	//our paint component methiod that draws every thing we need to the screen
@@ -98,23 +116,3 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		public void keyTyped(KeyEvent event) {
 		}
 		
-		
-
-	public void spawnOther() {
-			Random randomGen = new Random();
-			int rand = 0;// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
-			rand = randomGen.nextInt(10) + 1;
-
-			
-			if (rand <= 8) {
-			
-				enemyList.add(new Meteor()); 
-		
-			}
-			
-				else if (rand > 8) {
-			
-				enemyList.add(new Destroyer()); // 
-		
-			}
-}
