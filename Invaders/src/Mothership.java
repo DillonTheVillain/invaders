@@ -13,6 +13,25 @@ public void die(){
   }
 }
 
+public void move()
+		{
+			while(isActive=true)
+			{
+				if (position.x >= parentWidth);
+				{
+				position.x -= (10*speed);
+				speed++
+				}
+				position.y -= (10*speed);
+				if(position.x <= 0)
+				{
+				position.x += (10*speed);
+				speed++
+				}
+				position.y -= (10*speed);
+			}
+		}
+
 public void shoot(){
 			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
 		}
