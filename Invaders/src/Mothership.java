@@ -1,5 +1,14 @@
 
-public class Mothership extends Boss implements canShoot, canCloak {
+public class Mothership extends Boss implements canShoot{
 
-private int points = 200;
+private int points = 100;
+private int lives = 3;
+
+public void die(){
+  if (lives==0)
+  {
+    active=false;
+    return points;
+  }
+}
 }
