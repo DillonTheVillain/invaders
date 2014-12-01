@@ -9,7 +9,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 
-public class Destroyer extends Boss {
+public class Destroyer extends Boss implements canShoot {
 	
 	private ArrayList<EnemyBullet> bulletList;
 	private int parentWidth;
@@ -71,7 +71,7 @@ public class Destroyer extends Boss {
 			return score;
 		}
 		
-		public void fire(){
+		public void shoot(){
 			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
 		}
 		
