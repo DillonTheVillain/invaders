@@ -77,6 +77,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 	
+	public void spawnMothership(ArrayList) {
+		If (ArrayList.Length<=0)
+		{
+		enemyList.clear();
+		enemyList.add(new Mothership(new Point(400, 10)));
+		}
+	}
+	public static ArrayList<Enemy> getEnemyList() {
+		return enemyList;
+	}
 	//our paint component methiod that draws every thing we need to the screen
 	public void paintComponent(Graphics g) {
 		//this line ensures that every that would usually be drawn by a panel is
