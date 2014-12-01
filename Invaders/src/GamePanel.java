@@ -24,8 +24,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	public GamePanel(){
 		
-		enemyList = new ArrayList<Enemy>();
-		enemyList.add(new Martian); //Can't get my enemies added to this list
+		enemyList = new ArrayList<Enemy>(); //Adding the enemies to the game in rows with for loops at a new point for each.
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Martian(new Point(((i * 70) + 10), 10)));
+		}
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Venusian(new Point(((i * 70) + 10), 100)));
+		}
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Mercurian(new Point(((i * 70) + 10), 200)));
+		}
 		// this starts the time that controls how often the screen is redrawn 
 		redrawTimer = new Timer(10, this);
 	}
