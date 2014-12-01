@@ -15,7 +15,7 @@ public class EnemyBullet {
 	private boolean active;
 
 	
-	public Bullet(Point playerPosition){
+	public Bullet(Point enemyPosition){
 		
 		//same as the player class this simply loads the image for the bullet.
 		try {
