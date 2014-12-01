@@ -97,8 +97,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		@Override
 		public void keyTyped(KeyEvent event) {
 		}
+		
+		
 
+	public void spawnOther() {
+			Random randomGen = new Random();
+			int rand = 0;// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
+			rand = randomGen.nextInt(10) + 1;
 
-
-	
+			
+			if (rand <= 8) {
+			
+				enemyList.add(new Meteor()); 
+		
+			}
+			
+				else if (rand > 8) {
+			
+				enemyList.add(new Destroyer()); // 
+		
+			}
 }
