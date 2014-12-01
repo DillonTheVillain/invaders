@@ -1,5 +1,5 @@
 
-public class Boss {
+abstract class Boss {
 
 	int lives;
 	
