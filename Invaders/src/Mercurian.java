@@ -39,11 +39,27 @@ public Mercurian(int parentWidth, int parentHeight)
 	
 }
 
-public void cloak() {
-	// TODO Auto-generated method stub
-	
-	
-}
+public void cloak(Graphics g) {
+			
+			//draws the player image in its current position
+			g.drawImage(img, position.x, position.y, width, height, null);
+			
+			//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
+			//otherwise the bullets move and draw methods are called to update it on the screen
+			Iterator<EnemyBullet> iterator = bulletList.iterator();
+			while (iterator.hasNext()) {
+			    EnemyBullet b = iterator.next();
+			    
+			    if(b!=null && b.isActive()){
+			    	b.move();
+			    	b.draw(g);
+			    }
+			    else{
+			    	iterator.remove();
+			    }
+			}
+			
+		}
 
 
 }
