@@ -15,7 +15,7 @@ public class EnemyBullet {
 	private boolean active;
 
 	
-	public Bullet(Point enemyPosition){
+	public EnemyBullet(Point enemyPosition){
 		
 		//same as the player class this simply loads the image for the bullet.
 		try {
@@ -71,8 +71,8 @@ public class EnemyBullet {
 		return position;
 	}
 	
-	// this method will flag as an error until you create your enemy classes
-	public void detectCollision(Player e)
+	// After collision
+	public void detectCollision(Enemy e)
 	{
 		
 	}
