@@ -14,6 +14,7 @@ public class Martian extends Invader implements canShoot {
 	private int lives=1;
 	private int width;
 	private int height;
+	private int speed=5;
 
 	public Martian(int parentWidth, int parentHeight)
 	{
