@@ -62,15 +62,16 @@ public void draw(Graphics g) {
 		{
 			while(isActive())
 			{
-				while (position.x != parentWidth)//Might be other way round
+				if (position.x >= parentWidth);
 				{
-				position.x += position.x;
+				position.x -= (10*playerSpeed);
 				}
-				position.y -= position.y;
-				while (position.x != 0)
+				position.y -= (10*playerSpeed);
+				if(position.x <= 0)
 				{
-				position.x -= position.x;
+				position.x += (10*playerSpeed);
 				}
+				position.y -= (10*playerSpeed);
 			}
 		}
 }
