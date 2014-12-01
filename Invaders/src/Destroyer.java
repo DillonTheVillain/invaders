@@ -21,7 +21,9 @@ public class Destroyer extends Boss implements canShoot {
 	private int playerSpeed =5;
 	final int score =200;
 	private boolean active=false;
+	private boolean cloak = false;
 	Random rnd=new Random();
+	timer cloakTime = new Timer (2000,this)
 	
 	public Destroyer(int parentWidth, int parentHeight)
 	{
@@ -41,12 +43,20 @@ public class Destroyer extends Boss implements canShoot {
 		this.parentHeight=parentHeight;
 		
 		this.position = new Point(0,rnd.nextInt(parentHeight)+1);
+		cloakTime.start();
 	}
-		
+		public void actionPerformed(ActionEvent e) {
+			{
+				cloak=!cloak;
+			}
+			
 		public void draw(Graphics g) {
 			
-			//draws the player image in its current position
+			if(!cloak)
+			{
+			//draws the Destroyer image in its current position if not cloaked
 			g.drawImage(img, position.x, position.y, width, height, null);
+			}
 			
 			//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
 			//otherwise the bullets move and draw methods are called to update it on the screen
