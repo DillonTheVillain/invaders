@@ -12,4 +12,18 @@ public void die(){
     return points;
   }
 }
+
+public void shoot(){
+			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
+		}
+		
+		public EnemyBullet getBullet(int i){
+			return bulletList.get(i);
+			
+		}
+		
+		public int getBulletCount(){
+			return bulletList.size();
+		}
+		
 }
