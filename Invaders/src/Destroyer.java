@@ -17,6 +17,7 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 	private int width;
 	private int height;
 	private Point position;
+	private int lives=2;
 	private BufferedImage img;
 	private int playerSpeed =5;
 	final int score =200;
@@ -79,8 +80,10 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 		
 		public int kill()
 		{
+			if(lives==0){
 			active=false;
 			return score;
+			}
 		}
 		
 		public void shoot(){
