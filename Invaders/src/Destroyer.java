@@ -9,7 +9,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 
-public class Destroyer extends Boss implements canShoot {
+public class Destroyer extends Boss implements canCloak, canShoot {
 	
 	private ArrayList<EnemyBullet> bulletList;
 	private int parentWidth;
