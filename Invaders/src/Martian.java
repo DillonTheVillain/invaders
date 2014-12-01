@@ -37,7 +37,17 @@ public class Martian extends Invader implements canShoot {
 	}
 	
 	public void shoot() {
-		// TODO Auto-generated method stub
+		
+			bulletList.add(new eBullet(new Point(position.x+(width/2), position.y)));
+		}
+		
+		public eBullet getBullet(int i){
+			return bulletList.get(i);
+			
+		}
+		
+		public int getBulletCount(){
+			return bulletList.size();
 		
 	}
 
