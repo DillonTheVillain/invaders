@@ -14,6 +14,7 @@ private boolean isActive=true;
 private int lives=1;
 private int width;
 private int height;
+private int speed=5;
 
 public Venusian(int parentWidth, int parentHeight)
 {
