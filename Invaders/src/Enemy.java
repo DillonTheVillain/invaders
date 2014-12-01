@@ -60,7 +60,7 @@ public void draw(Graphics g) {
 
 	public void move()
 		{
-			while(isActive())
+			while(isActive=true)
 			{
 				if (position.x >= parentWidth);
 				{
