@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
