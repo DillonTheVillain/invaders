@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class Destroyer extends Boss {
 	
-	private ArrayList<eBullet> bulletList;
+	private ArrayList<EnemyBullet> bulletList;
 	private int parentWidth;
 	private int parentHeight;
 	private int width;
@@ -50,9 +50,9 @@ public class Destroyer extends Boss {
 			
 			//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
 			//otherwise the bullets move and draw methods are called to update it on the screen
-			Iterator<eBullet> iterator = bulletList.iterator();
+			Iterator<EnemyBullet> iterator = bulletList.iterator();
 			while (iterator.hasNext()) {
-			    eBullet b = iterator.next();
+			    EnemyBullet b = iterator.next();
 			    
 			    if(b!=null && b.isActive()){
 			    	b.move();
@@ -72,10 +72,10 @@ public class Destroyer extends Boss {
 		}
 		
 		public void fire(){
-			bulletList.add(new eBullet(new Point(position.x+(width/2), position.y)));
+			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
 		}
 		
-		public eBullet getBullet(int i){
+		public EnemyBullet getBullet(int i){
 			return bulletList.get(i);
 			
 		}
