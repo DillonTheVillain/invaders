@@ -47,7 +47,9 @@ public class Destroyer extends Boss implements canShoot {
 	}
 		public void actionPerformed(ActionEvent e) {
 			{
+				if (e.getSource() == cloakTimer){
 				cloak=!cloak;
+				}
 			}
 			
 		public void draw(Graphics g) {
