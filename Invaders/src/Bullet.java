@@ -53,15 +53,7 @@ public class Bullet {
 		
 	}
 	
-	public void moveEnemy(){
-		if(position.y > 600){
-			destroy();
-		}
-		else{
-			position.y+=speed;
-		}
-		
-	}
+	
 	
 	//sets the bullet as inactive
 	public void destroy(){
