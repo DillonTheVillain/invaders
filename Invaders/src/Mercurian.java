@@ -16,6 +16,9 @@ private int lives=1;
 private int width;
 private int height;
 private int speed=5;
+private boolean cloak = false;
+Random rnd=new Random();
+timer cloakTime = new Timer (2000,this)
 
 
 
