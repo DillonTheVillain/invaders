@@ -17,6 +17,7 @@ public class Meteor extends Enemy {
 	private int width;
 	private int height;
 	private int lives=1;
+	private int score=100;
 	Random rnd = new Random();
 	
 	public Meteor(int parentWidth, int parentHeight,Point point, int lives)
@@ -39,6 +40,17 @@ public class Meteor extends Enemy {
 		this.position.x = rnd.nextInt(parentWidth)+1;
 		point=this.position;
 	}
+	
+	public int die() //when hit take away a life, if lives hit zero set active to flase and return the score
+		{
+			lives--;
+			if(lives==0){
+			active=false;
+			return score;
+			}
+			return 0;
+			
+		}
 	
 	
 		@Override
