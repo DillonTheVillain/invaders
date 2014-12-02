@@ -41,15 +41,6 @@ public void draw(Graphics g) {
 		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
 	
-public int die() //when hit take away a life, if lives hit zero set active to flase and return the score
-	{
-		lives--;
-		if(lives==0){
-		active=false;
-		return score;
-		}
-		return 0;
-			
-	}
+
 
 }
