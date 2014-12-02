@@ -76,7 +76,7 @@ public class EnemyBullet {
 	public void detectCollisionEnemy(Player p) {
 		if (position.x <= (p.position.x + 50) && position.x >= p.position.x) {
 			if (position.y >= 540) {
-				die();
+				player.die(1);
 			}
 		}
 	
