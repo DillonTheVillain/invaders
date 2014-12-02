@@ -8,8 +8,7 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 
 
-public class Martian extends Invader{
-	private ArrayList<EnemyBullet> bulletList;
+public class Martian extends Invader implements canShoot{
 	private int points = 40;
 	private BufferedImage img;
 	private Point position = new Point(0,0);
@@ -35,25 +34,11 @@ public class Martian extends Invader{
 		this.height = img.getHeight();
 		this.width = img.getWidth();
 		this.position=point;
-		
-		bulletList = new ArrayList<EnemyBullet>();
 	}
 public void draw(Graphics g) {
 		
 		//draws the player image in its current position
 		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
-public void shoot(){
-	bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
-}
 
-//this returns a specific player bullet
-public EnemyBullet getBullet(int i){
-	return bulletList.get(i);
-	
-}
-//this returns the current number of bullets
-public int getBulletCount(){
-	return bulletList.size();
-}
 }
