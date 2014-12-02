@@ -70,7 +70,10 @@ public void draw(Graphics g) {
 }
 		
 
-		
+		public Boolean isActive()
+{
+	return isActive;
+}
 	
 		
 		public void move(){ //moving destroyer along x as long as it's within the parentwidth
