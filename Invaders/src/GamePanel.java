@@ -112,9 +112,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 			for(int i=0;i<enemyList.size();i++)
 			{
+				while(enemyList.get(i).isActive)
+				{
 				enemyList.get(i).move();
 				enemyList.get(i).draw(g);
-			
+				}
+				if(!enemyList.get(i).isActive)
+				{
+				enemyList.remove(i);
+				}
 			}
 		
 			if (enemyList.isEmpty())
