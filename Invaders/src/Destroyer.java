@@ -1,15 +1,17 @@
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-
+import javax.swing.Timer;
 import javax.imageio.ImageIO;
 
 
-public class Destroyer extends Boss implements canCloak, canShoot {
+public class Destroyer extends Boss implements ActionListener {
 	
 	private ArrayList<EnemyBullet> bulletList;
 	private int parentWidth;
@@ -20,14 +22,15 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 	private int lives=2;
 	private BufferedImage img;
 	private int playerSpeed =5;
-	final int score =200;
+	private int score =200;
 	private boolean active=false;
 	private boolean cloak = false;
 	Random rnd=new Random();
-	timer cloakTime = new Timer (2000,this)
+	Timer cloakTimer = new Timer (2000,this);
 	
-	public Destroyer(int parentWidth, int parentHeight)
+	public Destroyer(int parentWidth,int parentHeight,Point point)
 	{
+		super(point,parentWidth);
 		active=true;
 		try {
 			img = ImageIO.read(getClass().getResource("/Space-invaders.jpg"));
@@ -43,47 +46,37 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 		this.parentWidth=parentWidth;
 		this.parentHeight=parentHeight;
 		
-		this.position = new Point(0,rnd.nextInt(parentHeight)+1);
-		cloakTime.start();
+		this.position.x=0;
+		this.position.y = rnd.nextInt(parentHeight)+100;
+		point=this.position;
+		cloakTimer.start();
 	}
 		public void actionPerformed(ActionEvent e) {
 			{
+				
 				if (e.getSource() == cloakTimer){
 				cloak=!cloak;
-				}
+				}}
 			}
-			
-		public void draw(Graphics g) {
+		
+public void draw(Graphics g) {
 			
 			if(!cloak)
 			{
 			//draws the Destroyer image in its current position if not cloaked
 			g.drawImage(img, position.x, position.y, width, height, null);
 			}
-			
-			//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
-			//otherwise the bullets move and draw methods are called to update it on the screen
-			Iterator<EnemyBullet> iterator = bulletList.iterator();
-			while (iterator.hasNext()) {
-			    EnemyBullet b = iterator.next();
-			    
-			    if(b!=null && b.isActive()){
-			    	b.move();
-			    	b.draw(g);
-			    }
-			    else{
-			    	iterator.remove();
-			    }
-			}
-			
-		}
+}
 		
 		public int kill()
 		{
+			lives--;
 			if(lives==0){
 			active=false;
 			return score;
 			}
+			return 0;
+			
 		}
 		
 		public void shoot(){
@@ -99,9 +92,12 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 			return bulletList.size();
 		}
 		
+	
+		
 		public void move(){
 			if(position.x != this.parentWidth)
 			{
+				
 				this.position.x += (10*playerSpeed);
 			}
 			else
@@ -109,5 +105,11 @@ public class Destroyer extends Boss implements canCloak, canShoot {
 				active=false;
 			}
 		}
+
+	
+		
+
+		
+
 		
 }
