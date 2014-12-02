@@ -11,9 +11,8 @@ import javax.swing.Timer;
 import javax.imageio.ImageIO;
 
 
-public class Destroyer extends Boss implements ActionListener {
+public class Destroyer extends Boss implements ActionListener, canShoot {
 	
-	private ArrayList<EnemyBullet> bulletList;
 	private int parentWidth;
 	private int parentHeight;
 	private int width;
@@ -77,19 +76,6 @@ public void draw(Graphics g) {
 			}
 			return 0;
 			
-		}
-		
-		public void shoot(){
-			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
-		}
-		
-		public EnemyBullet getBullet(int i){
-			return bulletList.get(i);
-			
-		}
-		
-		public int getBulletCount(){
-			return bulletList.size();
 		}
 		
 	
