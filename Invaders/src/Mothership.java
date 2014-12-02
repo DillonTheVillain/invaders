@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class Mothership extends Boss{
+public class Mothership extends Boss implements canShoot {
 
 private int points = 100;
 private int lives = 3;
