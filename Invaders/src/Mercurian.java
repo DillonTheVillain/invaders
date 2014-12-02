@@ -40,6 +40,10 @@ public Mercurian(Point point,int parentWidth, int lives)
 		e.printStackTrace();
 	}
 	
+	public Boolean isActive()
+{
+	return isActive;
+}
 
 	
 	//the height and width of the player are set via the image size
