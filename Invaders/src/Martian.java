@@ -43,7 +43,7 @@ public void draw(Graphics g) {
 		//draws the player image in its current position
 		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
-public void fire(){
+public void shoot(){
 	bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
 }
 
