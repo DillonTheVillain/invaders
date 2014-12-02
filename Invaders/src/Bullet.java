@@ -72,9 +72,41 @@ public class Bullet {
 	}
 	
 	// this method will flag as an error until you create your enemy classes
-	//public void detectCollision(Enemy e)
+	public void detectCollision(Enemy e)
 //	{
 //		
+		//checks if meteor has been hit by anything
+		if(e instanceof Meteor){
+			if (position.x <= (e.getPos().x + 50)
+					&& position.x >= e.getPos().x && e.isActive() == true) {
+				if (position.y <= (e.getPos().y + 50)
+						&& position.y >= e.getPos().y) {
+					e.getHit();
+					destroy();
+				}
+			}
+		}
+		// checks if bosses have been hit by anything
+		if (e instanceof Bosses) {
+			if (position.x <= (e.getPos().x + 100)
+					&& position.x >= e.getPos().x && e.isActive() == true) {
+				if (position.y <= (e.getPos().y + 68)
+						&& position.y >= e.getPos().y) {
+					e.getHit();
+					destroy();
+				}
+			}
+
+		} else { //normal invaders
+			if (position.x <= (e.getPos().x + 50) && position.x >= e.getPos().x
+					&& e.isActive() == true) {
+				if (position.y <= (e.getPos().y + 50)
+						&& position.y >= e.getPos().y) {
+					e.getHit();
+					destroy();
+				}
+			}
+		}
 //	}
 	
 	
