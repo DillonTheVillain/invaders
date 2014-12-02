@@ -88,13 +88,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 	if (e.getSource() == enemyShoot){
-			Random rnd = new Random();
-			int rand=0;
-			rand = rnd.nextInt(enemyList.Length);
-			enemyList.get(rand).fire;
+			Enemy.Martian.shoot;//needs changing!
+			
 		}
 	}
-}
 
 	//our paint component methiod that draws every thing we need to the screen
 	public void paintComponent(Graphics g) {
@@ -117,15 +114,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				enemyList.get(i).draw(g);
 			
 			}
-		
-//		if(enemyList.isEmpty())
-//		{
-//			enemyList.clear();
-//			enemyList.add(new Mothership(new Point(400, 10),width));
-//		}
-		//your code for drawing the enemies should go in here. 
-		//You should use a collection of type Enemy and not multiple collections of different types.
-	}
 
 		//code here controls the keyevents
 		@Override
