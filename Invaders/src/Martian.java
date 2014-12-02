@@ -1,12 +1,15 @@
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+
 import javax.imageio.ImageIO;
 
 
-public class Martian extends Invader implements canShoot {
-	
+public class Martian extends Invader{
+	private ArrayList<EnemyBullet> bulletList;
 	private int points = 40;
 	private BufferedImage img;
 	private Point position = new Point(0,0);
@@ -16,9 +19,9 @@ public class Martian extends Invader implements canShoot {
 	private int height;
 	private int speed=5;
 
-	public Martian(int parentWidth, int parentHeight)
+	public Martian(Point point,int parentWidth)
 	{
-		
+		super(point,parentWidth);
 		//this code loads the image for the player. The try catches are used to catch and file io error
 		try {
 			img = ImageIO.read(getClass().getResource("/martian.jpg"));
@@ -31,48 +34,26 @@ public class Martian extends Invader implements canShoot {
 		//the height and width of the player are set via the image size
 		this.height = img.getHeight();
 		this.width = img.getWidth();
+		this.position=point;
 		
-		bulletList = new ArrayList<Bullet>();
-		
-		
+		bulletList = new ArrayList<EnemyBullet>();
 	}
-	
 public void draw(Graphics g) {
 		
 		//draws the player image in its current position
-		g.drawImage(img, position.x, position.y, width, height, null);
-		
-		//this code uses an iterator to run through the bullets, if a bullet has bee maked as inactive it is removed,
-		//otherwise the bullets move and draw methods are called to update it on the screen
-		Iterator<EnemyBullet> iterator = bulletList.iterator();
-		while (iterator.hasNext()) {
-		    EnemyBullet b = iterator.next();
-		    
-		    if(b!=null && b.isActive()){
-		    	b.move();
-		    	b.draw(g);
-		    }
-		    else{
-		    	iterator.remove();
-		    }
-		}
-		
+		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
+public void fire(){
+	bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
+}
+
+//this returns a specific player bullet
+public EnemyBullet getBullet(int i){
+	return bulletList.get(i);
 	
-	public void shoot() {
-		
-			bulletList.add(new EnemyBullet(new Point(position.x+(width/2), position.y)));
-		}
-		
-		public eBullet getBullet(int i){
-			return bulletList.get(i);
-			
-		}
-		
-		public int getBulletCount(){
-			return bulletList.size();
-		
-	}
-
-
+}
+//this returns the current number of bullets
+public int getBulletCount(){
+	return bulletList.size();
+}
 }
