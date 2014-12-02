@@ -28,9 +28,9 @@ public class Destroyer extends Boss implements ActionListener, canShoot {
 	Random rnd=new Random();
 	Timer cloakTimer = new Timer (2000,this);
 	
-	public Destroyer(int parentWidth,int parentHeight,Point point)
+	public Destroyer(int parentWidth,int parentHeight,Point point, int lives)
 	{
-		super(point,parentWidth);
+		super(point,parentWidth,lives);
 		active=true;
 		try {
 			img = ImageIO.read(getClass().getResource("/Space-invaders.jpg"));
