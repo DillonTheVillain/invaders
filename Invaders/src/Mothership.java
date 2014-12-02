@@ -17,8 +17,8 @@ private Point position;
 private int parentWidth;
 private boolean isActive = false;
 
-public Mothership(Point point,int parentWidth){
-	super(point, parentWidth);
+public Mothership(Point point,int parentWidth, int lives), {
+	super(point, parentWidth, lives);
 	//this code loads the image for the player. The try catches are used to catch and file io error
 			try {
 				img = ImageIO.read(getClass().getResource("/martian.jpg"));
