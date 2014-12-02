@@ -10,9 +10,10 @@ import java.util.Random;
 import javax.swing.Timer;
 import javax.imageio.ImageIO;
 
-
+//Destroyer extending boss class and implementing the canshoot interface
 public class Destroyer extends Boss implements ActionListener, canShoot {
 	
+	//Setting up the variables and initilising timer for cloaking
 	private int parentWidth;
 	private int parentHeight;
 	private int width;
@@ -50,7 +51,8 @@ public class Destroyer extends Boss implements ActionListener, canShoot {
 		point=this.position;
 		cloakTimer.start();
 	}
-		public void actionPerformed(ActionEvent e) {
+
+		public void actionPerformed(ActionEvent e) { //Checks if the timer has finished and if it has it switches cloak
 			{
 				
 				if (e.getSource() == cloakTimer){
@@ -60,14 +62,14 @@ public class Destroyer extends Boss implements ActionListener, canShoot {
 		
 public void draw(Graphics g) {
 			
-			if(!cloak)
+			if(!cloak) //Only draw if not cloaked
 			{
 			//draws the Destroyer image in its current position if not cloaked
 			g.drawImage(img, position.x, position.y, width, height, null);
 			}
 }
 		
-		public int kill()
+		public int kill() //when hit take away a life, if lives hit zero set active to flase and return the score
 		{
 			lives--;
 			if(lives==0){
@@ -80,7 +82,7 @@ public void draw(Graphics g) {
 		
 	
 		
-		public void move(){
+		public void move(){ //moving destroyer along x as long as it's within the parentwidth
 			if(position.x != this.parentWidth)
 			{
 				
