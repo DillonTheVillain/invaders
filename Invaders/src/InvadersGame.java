@@ -21,9 +21,6 @@ public class InvadersGame extends JFrame  {
 
 	}
 
-
-
-	
 	private GamePanel panel;
 
 
