@@ -1,5 +1,10 @@
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 
 
 abstract class Enemy {
@@ -11,67 +16,40 @@ abstract class Enemy {
 	private Point position;
 	private int playerSpeed =7;
 	private BufferedImage img;
-	private boolean active =true;
+	boolean isActive=true;
 	private int score;
+	private int lives;
+	private int points;
 	
-	try {		
-		img = ImageIO.read(getClass().getResource("/Space-invaders.jpg"));//change sprite
-		System.out.println("***************OK*******************");
-		} catch (IOException e) {
-		System.out.println("***************CAN'T READ FILE*******************");
-		e.printStackTrace();
-		}
-	
-				
-		//the height and width of the player are set via the image size
-		this.height = img.getHeight();
-		this.width = img.getWidth();
-				
-		//this is the height and width of the game screen, passed through from or main application
-		this.parentHeight = parentHeight;
-		this.parentWidth = parentWidth;
-				
-		//we set the player to initially appear in the middle (Horizontally) 
-		//and at the bottom (vertically) of the game screen 
-		this.position = new Point(parentWidth/2,parentHeight - this.height);
-		}
-		
+	public Enemy(Point point, int parentWidth)
+	{
+		this.position = point;
+	}
+
 public void draw(Graphics g) {
-			
-			//draws the player image in its current position
-			g.drawImage(img, position.x, position.y, width, height, null);			
-		}
-
-	public void die() {
-		lives--;
-		if(lives==0){
-			isActive=false;
-		}
 		
-	}
-	
-	public int getScore() {
-		return points;
-	}
-	
-	public Point getPosition() {
-		return position;
+		//draws the player image in its current position
+		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
 
-	public void move()
-		{
-			while(isActive=true)
-			{
-				if (position.x >= parentWidth);
-				{
-				position.x -= (10*playerSpeed);
-				}
-				position.y -= (10*playerSpeed);
-				if(position.x <= 0)
-				{
-				position.x += (10*playerSpeed);
-				}
-				position.y -= (10*playerSpeed);
-			}
-		}
+public void die() {
+	lives--;
+	if(lives==0){
+		isActive=false;
+	}
+	
 }
+
+public int getScore() {
+	return points;
+}
+
+public Point getPosition() {
+	return position;
+}
+
+public void move(){
+}
+}
+
+
