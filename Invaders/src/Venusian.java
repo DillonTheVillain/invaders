@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -16,9 +17,9 @@ private int width;
 private int height;
 private int speed=5;
 
-public Venusian(int parentWidth, int parentHeight)
+public Venusian(Point point,int parentWidth)
 {
-	
+	super(point,parentWidth);
 	//this code loads the image for the player. The try catches are used to catch and file io error
 	try {
 		img = ImageIO.read(getClass().getResource("/venusian.jpg"));
@@ -32,9 +33,14 @@ public Venusian(int parentWidth, int parentHeight)
 	this.height = img.getHeight();
 	this.width = img.getWidth();
 	
+	this.position=point;
 	
 
 	
 }
-
+public void draw(Graphics g) {
+	
+	//draws the player image in its current position
+	g.drawImage(img, position.x, position.y, width, height, null);			
+}
 }
