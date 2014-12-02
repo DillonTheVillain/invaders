@@ -32,10 +32,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		// this starts the time that controls how often the screen is redrawn 
 		redrawTimer = new Timer(10, this);
 		
-		enemyTimer = new Timer((rnd.nextInt(10)*10000), this);
+		enemyTimer = new Timer((rnd.nextInt(10)*100), this);
 		enemyShoot = new Timer((rnd.nextInt(10)*2000), this);
 		
 		redrawTimer.start();
+		enemyTimer.start();
 		
 	}
 	
@@ -67,31 +68,32 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {	
 		//causes the screen to be redrawn
+		
 		this.repaint();
 		
+		
 		if (e.getSource() == enemyTimer){
+			System.out.println("OK timer works");
 		Random randomGen = new Random();
-		int rand = 0;// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
-		rand = randomGen.nextInt(5) + 1;
+		// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
+		int rand = randomGen.nextInt(5);
 
 			
-		if (rand <= 4) {
-			
-			//enemyList.add(new Meteor(width,height)); 
+		if (rand <= 3) {
+			enemyList.add(new Meteor(width,height, null)); 
+		}
+			else if (rand > 3) {
+			enemyList.add(new Destroyer(width,height, null)); // 
 		
 		}
-			
-			else if (rand > 4) {
-			
-			//enemyList.add(new Destroyer(width,height)); // 
-		
-		}
-	}
+		enemyTimer.restart();
+}
 	if (e.getSource() == enemyShoot){
-			Enemy.Martian.shoot;//needs changing!
+			//Enemy.Martian.shoot;//needs changing!
 			
 		}
 	}
+
 
 	//our paint component methiod that draws every thing we need to the screen
 	public void paintComponent(Graphics g) {
@@ -114,6 +116,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				enemyList.get(i).draw(g);
 			
 			}
+		
+			if (enemyList.isEmpty())
+			{
+				
+			enemyList.add(new Mothership(new Point(10,10), width));
+			}
+		//your code for drawing the enemies should go in here. 
+		//You should use a collection of type Enemy and not multiple collections of different types.
+	}
 
 		//code here controls the keyevents
 		@Override
