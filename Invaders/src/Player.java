@@ -109,11 +109,12 @@ public class Player {
 		return bulletList.size();
 	}
 	//removes a life from the player
-	public void die(){
-		lives--;
-		if(lives=0)
+	public void die(int i){
+		lives-=i;
+		if (lives<=0)
 		{
-			EXIT
+			System.out.println("GAME OVER");
+			System.exit(0);
 		}
 	}
 	
