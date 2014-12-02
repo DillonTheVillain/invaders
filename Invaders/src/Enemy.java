@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 
 abstract class Enemy {
-	
+	//declaring variables
 	private int parentWidth;
 	private int parentHeight;
 	private int width;
@@ -21,18 +21,18 @@ abstract class Enemy {
 	private int lives;
 	private int points;
 	
-	public Enemy(Point point, int parentWidth)
+	public Enemy(Point point, int parentWidth) //setting enemy position
 	{
 		this.position = point;
-	}
+	} 
 
-public void draw(Graphics g) {
+public void draw(Graphics g) { //drawing enemy
 		
 		//draws the player image in its current position
 		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
 
-public int die() {
+public int die() { //minus lives if it dies, if lives hit 0 it's not active and return the score
 	lives--;
 	if(lives==0){
 		isActive=false;
