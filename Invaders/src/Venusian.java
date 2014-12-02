@@ -38,6 +38,12 @@ public Venusian(Point point,int parentWidth, int lives)
 
 	
 }
+
+public Boolean isActive()
+{
+	return isActive;
+}
+
 public void draw(Graphics g) {
 	
 	//draws the player image in its current position
