@@ -18,9 +18,9 @@ public class Martian extends Invader implements canShoot{
 	private int height;
 	private int speed=5;
 
-	public Martian(Point point,int parentWidth)
+	public Martian(Point point,int parentWidth, int lives)
 	{
-		super(point,parentWidth);
+		super(point,parentWidth, lives);
 		//this code loads the image for the player. The try catches are used to catch and file io error
 		try {
 			img = ImageIO.read(getClass().getResource("/martian.jpg"));
