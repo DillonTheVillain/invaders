@@ -38,5 +38,10 @@ public Invader(Point point,int parentWidth, int lives) {
 				lastLeft=!lastLeft;
 				point.y += 20;
 			}
+			
+			if(point.y>parentheight)
+			{
+				player.lives=0;
+			}
 }	
 }
