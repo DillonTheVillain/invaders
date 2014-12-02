@@ -6,8 +6,8 @@ private Point point;
 private int playerSpeed=5;
 private int parentWidth;
 boolean lastLeft=true;
-public Invader(Point point,int parentWidth) {
-		super(point,parentWidth);
+public Invader(Point point,int parentWidth, int lives) {
+		super(point,parentWidth, lives);
 		this.point=point;
 		this.parentWidth=parentWidth;
 	}
