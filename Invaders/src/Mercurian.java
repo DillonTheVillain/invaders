@@ -40,6 +40,16 @@ public Mercurian(Point point,int parentWidth, int lives)
 		e.printStackTrace();
 	}
 	
+	public int die() //when hit take away a life, if lives hit zero set active to flase and return the score
+	{
+		lives--;
+		if(lives==0){
+		active=false;
+		return score;
+		}
+		return 0;
+	}
+	
 	//the height and width of the player are set via the image size
 	this.height = img.getHeight();
 	this.width = img.getWidth();
