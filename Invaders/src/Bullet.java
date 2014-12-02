@@ -81,8 +81,7 @@ public class Bullet {
 					&& position.x >= e.getPos().x && e.isActive() == true) {
 				if (position.y <= (e.getPos().y + 50)
 						&& position.y >= e.getPos().y) {
-					e.getHit();
-					destroy();
+					die();
 				}
 			}
 		}
@@ -92,8 +91,7 @@ public class Bullet {
 					&& position.x >= e.getPos().x && e.isActive() == true) {
 				if (position.y <= (e.getPos().y + 68)
 						&& position.y >= e.getPos().y) {
-					e.getHit();
-					destroy();
+				die();
 				}
 			}
 
@@ -102,8 +100,7 @@ public class Bullet {
 					&& e.isActive() == true) {
 				if (position.y <= (e.getPos().y + 50)
 						&& position.y >= e.getPos().y) {
-					e.getHit();
-					destroy();
+				die();
 				}
 			}
 		}
