@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -16,35 +17,44 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
+	Random rnd = new Random();
+	private int width;
+	private int height;
 
 	//his is the class where most of the game code occurs
 	private Player player;
 
-	private ArrayList<Enemy> enemyList;
-	Timer redrawTimer;
-	enemyTimer = new Timer(rnd.NextInt(10)*1000, this);
+	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>(); //Adding the enemies to the game in rows with for loops at a new point for each.
+;
+	Timer redrawTimer, enemyTimer, enemyShoot;
 	
 	public GamePanel(){
-		
-		enemyList = new ArrayList<Enemy>(); //Adding the enemies to the game in rows with for loops at a new point for each.
-		for (int i = 0; i < 6; i++) {
-			enemyList.add(new Martian(new Point(((i * 70) + 10), 10)));
-		}
-		for (int i = 0; i < 6; i++) {
-			enemyList.add(new Venusian(new Point(((i * 70) + 10), 100)));
-		}
-		for (int i = 0; i < 6; i++) {
-			enemyList.add(new Mercurian(new Point(((i * 70) + 10), 200)));
-		}
 		// this starts the time that controls how often the screen is redrawn 
 		redrawTimer = new Timer(10, this);
+		
+		enemyTimer = new Timer((rnd.nextInt(10)*10000), this);
+		enemyShoot = new Timer((rnd.nextInt(10)*2000), this);
+		
+		redrawTimer.start();
+		
 	}
 	
 	//method to start the game
 	public void startGame(int width, int height){
 		
+		this.width=width;
+		this.height=height;
 		player = new Player(width,height);
-		redrawTimer.start();
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Martian(new Point(((i * 150) + 10), 200), width));
+		}
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Venusian(new Point(((i * 150) + 10), 10), width));
+		}
+		for (int i = 0; i < 6; i++) {
+			enemyList.add(new Mercurian(new Point(((i * 150) + 10), 100), width));
+		}
+
 	}
 	
 	//method to pause the game
@@ -59,34 +69,33 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//causes the screen to be redrawn
 		this.repaint();
 		
+		if (e.getSource() == enemyTimer){
 		Random randomGen = new Random();
 		int rand = 0;// random number gen decides whether to spawn which one, 80% chance of meteor, 20% destroyer
-		rand = randomGen.nextInt(10) + 1;
+		rand = randomGen.nextInt(5) + 1;
 
 			
-		if (rand <= 8) {
+		if (rand <= 4) {
 			
-			enemyList.add(new Meteor()); 
+			//enemyList.add(new Meteor(width,height)); 
 		
 		}
 			
-			else if (rand > 8) {
+			else if (rand > 4) {
 			
-			enemyList.add(new Destroyer()); // 
+			//enemyList.add(new Destroyer(width,height)); // 
 		
 		}
 	}
-	
-	public void spawnMothership(ArrayList) {
-		If (ArrayList.Length<=0)
-		{
-		enemyList.clear();
-		enemyList.add(new Mothership(new Point(400, 10)));
+	if (e.getSource() == enemyShoot){
+			Random rnd = new Random();
+			int rand=0;
+			rand = rnd.nextInt(enemyList.Length);
+			enemyList.get(rand).fire;
 		}
 	}
-	public static ArrayList<Enemy> getEnemyList() {
-		return enemyList;
-	}
+}
+
 	//our paint component methiod that draws every thing we need to the screen
 	public void paintComponent(Graphics g) {
 		//this line ensures that every that would usually be drawn by a panel is
@@ -102,6 +111,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player.draw(g);
 		} 
 		
+			for(int i=0;i<enemyList.size();i++)
+			{
+				enemyList.get(i).move();
+				enemyList.get(i).draw(g);
+			
+			}
+		
+//		if(enemyList.isEmpty())
+//		{
+//			enemyList.clear();
+//			enemyList.add(new Mothership(new Point(400, 10),width));
+//		}
 		//your code for drawing the enemies should go in here. 
 		//You should use a collection of type Enemy and not multiple collections of different types.
 	}
@@ -126,4 +147,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		@Override
 		public void keyTyped(KeyEvent event) {
 		}
+}
+
+
 		
