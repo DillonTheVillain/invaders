@@ -41,7 +41,10 @@ public class Meteor extends Enemy {
 		point=this.position;
 	}
 	
-
+public Boolean isActive()
+{
+	return isActive;
+}
 	
 	
 		@Override
