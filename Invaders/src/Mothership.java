@@ -46,6 +46,11 @@ public Mothership(Point point,int parentWidth, int lives), {
 				return 0;
 				
 			}
+			
+public Boolean isActive()
+{
+	return isActive;
+}
 
 public void move()
 		{
