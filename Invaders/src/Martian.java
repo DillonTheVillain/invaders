@@ -35,6 +35,12 @@ public class Martian extends Invader implements canShoot{
 		this.width = img.getWidth();
 		this.position=point;
 	}
+	
+	public Boolean isActive()
+{
+	return isActive;
+}
+	
 public void draw(Graphics g) {
 		
 		//draws the player image in its current position
