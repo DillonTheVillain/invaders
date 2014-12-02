@@ -41,9 +41,7 @@ public Invader(Point point,int parentWidth, int lives) {
 			
 			if(point.y>700)
 			{
-				player.die();
-				player.die();
-				player.die();
+				player.die(3);
 			}
 }	
 }
