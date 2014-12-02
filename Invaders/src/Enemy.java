@@ -32,11 +32,13 @@ public void draw(Graphics g) {
 		g.drawImage(img, position.x, position.y, width, height, null);			
 	}
 
-public void die() {
+public int die() {
 	lives--;
 	if(lives==0){
 		isActive=false;
+		return points;
 	}
+	return 0;
 	
 }
 
