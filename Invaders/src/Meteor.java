@@ -16,11 +16,12 @@ public class Meteor extends Enemy {
 	private int playerSpeed;
 	private int width;
 	private int height;
+	private int lives=1;
 	Random rnd = new Random();
 	
-	public Meteor(int parentWidth, int parentHeight,Point point)
+	public Meteor(int parentWidth, int parentHeight,Point point, int lives)
 	{
-		super(point,parentWidth);
+		super(point,parentWidth, lives);
 		try {
 			img = ImageIO.read(getClass().getResource("/Space-invaders.jpg"));//Change to Meteor sprite
 			System.out.println("***************OK*******************");
