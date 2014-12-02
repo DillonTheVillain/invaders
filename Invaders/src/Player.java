@@ -111,6 +111,10 @@ public class Player {
 	//removes a life from the player
 	public void die(){
 		lives--;
+		if(lives=0)
+		{
+			EXIT
+		}
 	}
 	
 
