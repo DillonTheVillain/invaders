@@ -73,9 +73,9 @@ public class Bullet {
 	
 	// this method will flag as an error until you create your enemy classes
 	//public void detectCollision(Enemy e)
-	{
-		
-	}
+//	{
+//		
+//	}
 	
 	
 
