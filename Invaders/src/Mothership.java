@@ -42,6 +42,8 @@ public Mothership(Point point,int parentWidth, int lives), {
 				if(lives==0){
 				isActive=false;
 				return points;
+				System.out.println("You win!");
+				System.exit(0);
 				}
 				return 0;
 				
